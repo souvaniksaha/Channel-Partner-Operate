@@ -18,3 +18,5 @@ Route::get('/', function () {
 });
 Route::get('import','ChannelPartnerOperateArea@index');
 Route::post('/area/store','ChannelPartnerOperateArea@store');
+Route::get('/dropdown','ChannelPartnerOperateArea@dropDown');
+Route::post('/dynamic_dependent/fetch','ChannelPartnerOperateArea@fetch')->name('dynamicdependent.fetch');
