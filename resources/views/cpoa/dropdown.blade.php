@@ -32,7 +32,7 @@
           </div>
           <div class="col-4">
             <label for="State">Select Pincode</label>
-            <select class="form-control input-lg dynamic" name="pincode" id="pincode">
+            <select class="form-control input-lg dynamic" name="pincode[]" id="pincode" multiple>
                 <option>Default select</option>
             </select>
         </div>
@@ -46,19 +46,18 @@
             $('.dynamic').change(function(){
             if($(this).val() != '')
             {
-            var select = $(this).attr("id");
-            var value = $(this).val();
-            var dependent = $(this).data('dependent');
-            var _token = $('input[name="_token"]').val();
-            $.ajax({
-                url:"{{ route('dynamicdependent.fetch') }}",
-                method:"POST",
-                data:{select:select, value:value, _token:_token, dependent:dependent},
-                success:function(result)
-                {
-                $('#'+dependent).html(result);
-                }
-
+                var select = $(this).attr("id");
+                var value = $(this).val();
+                var dependent = $(this).data('dependent');
+                var _token = $('input[name="_token"]').val();
+                $.ajax({
+                    url:"{{ route('dynamicdependent.fetch') }}",
+                    method:"POST",
+                    data:{select:select, value:value, _token:_token, dependent:dependent},
+                    success:function(result)
+                    {
+                      $('#'+dependent).html(result);
+                    }
             })
             }
         });

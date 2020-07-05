@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('cpoa.demo');
 });
 Route::get('import','ChannelPartnerOperateArea@index');
 Route::post('/area/store','ChannelPartnerOperateArea@store');
